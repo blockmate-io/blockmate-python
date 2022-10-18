@@ -647,6 +647,8 @@ with blockmate.ApiClient(configuration) as api_client:
     query_params = {
         'since': "Wed Jan 01 01:00:00 CET 2020",
         'until': "Sat Feb 01 01:00:00 CET 2020",
+        'limit': 10,
+        'cursor': "cursor_example",
         'currency': "USD",
         'account-filter': "497f6eca-6276-4993-bfeb-53cbbbba6f08",
     }
@@ -677,6 +679,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 since | SinceSchema | | optional
 until | UntilSchema | | optional
+limit | LimitSchema | | optional
+cursor | CursorSchema | | optional
 currency | CurrencySchema | | optional
 account-filter | AccountFilterSchema | | optional
 
@@ -694,6 +698,20 @@ str, date,  | str,  |  | value must conform to RFC-3339 full-date YYYY-MM-DD
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str, date,  | str,  |  | value must conform to RFC-3339 full-date YYYY-MM-DD
+
+# LimitSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+decimal.Decimal, int, float,  | decimal.Decimal,  |  | 
+
+# CursorSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
 
 # CurrencySchema
 
@@ -736,6 +754,7 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **[transactions](#transactions)** | list, tuple,  | tuple,  |  | 
+**page_cursor** | str,  | str,  | Use this as &#x60;cursor&#x60; in the next request to get the next page. The &#x60;page_cursor&#x60; has a one hour validity. | [optional] 
 **[accounts](#accounts)** | list, tuple,  | tuple,  |  | [optional] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 

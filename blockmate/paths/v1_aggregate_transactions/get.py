@@ -55,6 +55,8 @@ class UntilSchema(
         regex=[{
             'pattern': r'^[0-9]{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$',  # noqa: E501
         }]
+LimitSchema = schemas.NumberSchema
+CursorSchema = schemas.StrSchema
 CurrencySchema = schemas.StrSchema
 AccountFilterSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
@@ -67,6 +69,8 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     {
         'since': typing.Union[SinceSchema, str, date, ],
         'until': typing.Union[UntilSchema, str, date, ],
+        'limit': typing.Union[LimitSchema, decimal.Decimal, int, float, ],
+        'cursor': typing.Union[CursorSchema, str, ],
         'currency': typing.Union[CurrencySchema, str, ],
         'account-filter': typing.Union[AccountFilterSchema, str, ],
     },
@@ -88,6 +92,18 @@ request_query_until = api_client.QueryParameter(
     name="until",
     style=api_client.ParameterStyle.FORM,
     schema=UntilSchema,
+    explode=True,
+)
+request_query_limit = api_client.QueryParameter(
+    name="limit",
+    style=api_client.ParameterStyle.FORM,
+    schema=LimitSchema,
+    explode=True,
+)
+request_query_cursor = api_client.QueryParameter(
+    name="cursor",
+    style=api_client.ParameterStyle.FORM,
+    schema=CursorSchema,
     explode=True,
 )
 request_query_currency = api_client.QueryParameter(
@@ -124,6 +140,7 @@ class SchemaFor200ResponseBodyApplicationJson(
         }
         
         class properties:
+            page_cursor = schemas.StrSchema
             
             
             class accounts(
@@ -676,11 +693,15 @@ class SchemaFor200ResponseBodyApplicationJson(
                 def __getitem__(self, i: int) -> MetaOapg.items:
                     return super().__getitem__(i)
             __annotations__ = {
+                "page_cursor": page_cursor,
                 "accounts": accounts,
                 "transactions": transactions,
             }
     
     transactions: MetaOapg.properties.transactions
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["page_cursor"]) -> MetaOapg.properties.page_cursor: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["accounts"]) -> MetaOapg.properties.accounts: ...
@@ -691,10 +712,13 @@ class SchemaFor200ResponseBodyApplicationJson(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["accounts", "transactions", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["page_cursor", "accounts", "transactions", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["page_cursor"]) -> typing.Union[MetaOapg.properties.page_cursor, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["accounts"]) -> typing.Union[MetaOapg.properties.accounts, schemas.Unset]: ...
@@ -705,7 +729,7 @@ class SchemaFor200ResponseBodyApplicationJson(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["accounts", "transactions", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["page_cursor", "accounts", "transactions", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -713,6 +737,7 @@ class SchemaFor200ResponseBodyApplicationJson(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         transactions: typing.Union[MetaOapg.properties.transactions, list, tuple, ],
+        page_cursor: typing.Union[MetaOapg.properties.page_cursor, str, schemas.Unset] = schemas.unset,
         accounts: typing.Union[MetaOapg.properties.accounts, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -721,6 +746,7 @@ class SchemaFor200ResponseBodyApplicationJson(
             cls,
             *args,
             transactions=transactions,
+            page_cursor=page_cursor,
             accounts=accounts,
             _configuration=_configuration,
             **kwargs,
@@ -916,6 +942,8 @@ class BaseApi(api_client.Api):
         for parameter in (
             request_query_since,
             request_query_until,
+            request_query_limit,
+            request_query_cursor,
             request_query_currency,
             request_query_account_filter,
         ):
