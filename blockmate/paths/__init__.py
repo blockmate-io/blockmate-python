@@ -16,6 +16,7 @@ class PathValues(str, enum.Enum):
     V1_AGGREGATE_ACCOUNTS = "/v1/aggregate/accounts"
     V1_AGGREGATE_BALANCE = "/v1/aggregate/balance"
     V1_AGGREGATE_TRANSACTIONS = "/v1/aggregate/transactions"
+    V1_AGGREGATE_NFT_METADATA = "/v1/aggregate/nft_metadata"
     V1_ACCOUNT_PROVIDER_CONNECT = "/v1/{account_provider}/connect"
     V1_ACCOUNT_PROVIDER_ACCOUNT_ACCOUNT_ID = "/v1/{account_provider}/account/{account_id}"
     V1_RISK_SCORE = "/v1/risk/score"

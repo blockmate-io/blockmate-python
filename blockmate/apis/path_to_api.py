@@ -11,6 +11,7 @@ from blockmate.apis.paths.v1_aggregate_account_provider_hints import V1Aggregate
 from blockmate.apis.paths.v1_aggregate_accounts import V1AggregateAccounts
 from blockmate.apis.paths.v1_aggregate_balance import V1AggregateBalance
 from blockmate.apis.paths.v1_aggregate_transactions import V1AggregateTransactions
+from blockmate.apis.paths.v1_aggregate_nft_metadata import V1AggregateNftMetadata
 from blockmate.apis.paths.v1_account_provider_connect import V1AccountProviderConnect
 from blockmate.apis.paths.v1_account_provider_account_account_id import V1AccountProviderAccountAccountId
 from blockmate.apis.paths.v1_risk_score import V1RiskScore
@@ -36,6 +37,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.V1_AGGREGATE_ACCOUNTS: V1AggregateAccounts,
         PathValues.V1_AGGREGATE_BALANCE: V1AggregateBalance,
         PathValues.V1_AGGREGATE_TRANSACTIONS: V1AggregateTransactions,
+        PathValues.V1_AGGREGATE_NFT_METADATA: V1AggregateNftMetadata,
         PathValues.V1_ACCOUNT_PROVIDER_CONNECT: V1AccountProviderConnect,
         PathValues.V1_ACCOUNT_PROVIDER_ACCOUNT_ACCOUNT_ID: V1AccountProviderAccountAccountId,
         PathValues.V1_RISK_SCORE: V1RiskScore,
@@ -62,6 +64,7 @@ path_to_api = PathToApi(
         PathValues.V1_AGGREGATE_ACCOUNTS: V1AggregateAccounts,
         PathValues.V1_AGGREGATE_BALANCE: V1AggregateBalance,
         PathValues.V1_AGGREGATE_TRANSACTIONS: V1AggregateTransactions,
+        PathValues.V1_AGGREGATE_NFT_METADATA: V1AggregateNftMetadata,
         PathValues.V1_ACCOUNT_PROVIDER_CONNECT: V1AccountProviderConnect,
         PathValues.V1_ACCOUNT_PROVIDER_ACCOUNT_ACCOUNT_ID: V1AccountProviderAccountAccountId,
         PathValues.V1_RISK_SCORE: V1RiskScore,

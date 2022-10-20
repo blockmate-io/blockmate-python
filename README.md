@@ -190,6 +190,7 @@ Class | Method | HTTP request | Description
 *AggregatedInfoApi* | [**account_providers_list**](docs/apis/tags/AggregatedInfoApi.md#account_providers_list) | **get** /v1/aggregate/account_providers | Get list of account providers
 *AggregatedInfoApi* | [**accounts**](docs/apis/tags/AggregatedInfoApi.md#accounts) | **get** /v1/aggregate/accounts | List accounts
 *AggregatedInfoApi* | [**balance**](docs/apis/tags/AggregatedInfoApi.md#balance) | **get** /v1/aggregate/balance | Get balance
+*AggregatedInfoApi* | [**n_ft_metadata**](docs/apis/tags/AggregatedInfoApi.md#n_ft_metadata) | **get** /v1/aggregate/nft_metadata | Get NFT metadata
 *AggregatedInfoApi* | [**transactions**](docs/apis/tags/AggregatedInfoApi.md#transactions) | **get** /v1/aggregate/transactions | Get transactions
 *AuthenticationApi* | [**user_api_authenticate_developer**](docs/apis/tags/AuthenticationApi.md#user_api_authenticate_developer) | **get** /v1/auth/developer | Authenticate developer
 *AuthenticationApi* | [**user_api_authenticate_project**](docs/apis/tags/AuthenticationApi.md#user_api_authenticate_project) | **get** /v1/auth | Authenticate project
@@ -215,7 +216,17 @@ Class | Method | HTTP request | Description
  - [AddressRiskReport](docs/models/AddressRiskReport.md)
  - [Amount](docs/models/Amount.md)
  - [ExchangeRate](docs/models/ExchangeRate.md)
+ - [Metadata](docs/models/Metadata.md)
  - [Movement](docs/models/Movement.md)
+ - [NftContractMetadata](docs/models/NftContractMetadata.md)
+ - [NftGateway](docs/models/NftGateway.md)
+ - [NftId](docs/models/NftId.md)
+ - [NftMedia](docs/models/NftMedia.md)
+ - [NftRaw](docs/models/NftRaw.md)
+ - [NftSpamInfo](docs/models/NftSpamInfo.md)
+ - [NftTokenType](docs/models/NftTokenType.md)
+ - [NftTokenUri](docs/models/NftTokenUri.md)
+ - [OwnedNft](docs/models/OwnedNft.md)
  - [RiskReportCategory](docs/models/RiskReportCategory.md)
  - [TransactionRiskReport](docs/models/TransactionRiskReport.md)
  - [User](docs/models/User.md)
