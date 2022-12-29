@@ -66,12 +66,6 @@ request_query_chain = api_client.QueryParameter(
 _auth = [
     'UserJWT',
 ]
-_servers = (
-    {
-        'url': "https://data-api.blockmate.io",
-        'description': "Call",
-    },
-)
 
 
 class SchemaFor200ResponseBodyApplicationJson(
@@ -298,11 +292,10 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
 
-    def _get_address_name_info_oapg(
+    def _get_address_name_info_single_oapg(
         self: api_client.Api,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        host_index: typing.Optional[int] = None,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -311,7 +304,7 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization
     ]:
         """
-        Get address name and category info
+        Get address name and category info for single address
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -339,14 +332,11 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
 
-        host = self._get_host_oapg('get_address_name_info', _servers, host_index)
-
         response = self.api_client.call_api(
             resource_path=used_path,
             method='get'.upper(),
             headers=_headers,
             auth_settings=_auth,
-            host=host,
             stream=stream,
             timeout=timeout,
         )
@@ -366,14 +356,13 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class GetAddressNameInfo(BaseApi):
+class GetAddressNameInfoSingle(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    def get_address_name_info(
+    def get_address_name_info_single(
         self: BaseApi,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        host_index: typing.Optional[int] = None,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -381,10 +370,9 @@ class GetAddressNameInfo(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._get_address_name_info_oapg(
+        return self._get_address_name_info_single_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
-            host_index=host_index,
             stream=stream,
             timeout=timeout,
             skip_deserialization=skip_deserialization
@@ -398,7 +386,6 @@ class ApiForget(BaseApi):
         self: BaseApi,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        host_index: typing.Optional[int] = None,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -406,10 +393,9 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._get_address_name_info_oapg(
+        return self._get_address_name_info_single_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
-            host_index=host_index,
             stream=stream,
             timeout=timeout,
             skip_deserialization=skip_deserialization

@@ -1,7 +1,7 @@
 <a name="__pageTop"></a>
 # blockmate.apis.tags.aggregated_info_api.AggregatedInfoApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.blockmate.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ import blockmate
 from blockmate.apis.tags import aggregated_info_api
 from blockmate.model.account_provider_hint import AccountProviderHint
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.blockmate.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = blockmate.Configuration(
-    host = "http://localhost"
+    host = "https://api.blockmate.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -139,10 +139,10 @@ import blockmate
 from blockmate.apis.tags import aggregated_info_api
 from blockmate.model.account_provider import AccountProvider
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.blockmate.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = blockmate.Configuration(
-    host = "http://localhost"
+    host = "https://api.blockmate.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -251,10 +251,10 @@ List accounts
 import blockmate
 from blockmate.apis.tags import aggregated_info_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.blockmate.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = blockmate.Configuration(
-    host = "http://localhost"
+    host = "https://api.blockmate.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -390,10 +390,10 @@ import blockmate
 from blockmate.apis.tags import aggregated_info_api
 from blockmate.model.amount import Amount
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.blockmate.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = blockmate.Configuration(
-    host = "http://localhost"
+    host = "https://api.blockmate.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -429,7 +429,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 query_params | RequestQueryParams | |
 accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
-host_index | typing.Optional[int] | default is None | Allows one to select a different host
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
 timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
 skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned
@@ -623,10 +622,10 @@ import blockmate
 from blockmate.apis.tags import aggregated_info_api
 from blockmate.model.owned_nft import OwnedNft
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.blockmate.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = blockmate.Configuration(
-    host = "http://localhost"
+    host = "https://api.blockmate.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -770,10 +769,10 @@ from blockmate.apis.tags import aggregated_info_api
 from blockmate.model.amount import Amount
 from blockmate.model.movement import Movement
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.blockmate.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = blockmate.Configuration(
-    host = "http://localhost"
+    host = "https://api.blockmate.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -814,7 +813,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 query_params | RequestQueryParams | |
 accept_content_types | typing.Tuple[str] | default is ('application/json', ) | Tells the server the content type(s) that are accepted by the client
-host_index | typing.Optional[int] | default is None | Allows one to select a different host
 stream | bool | default is False | if True then the response.content will be streamed and loaded from a file like object. When downloading a file, set this to True to force the code to deserialize the content to a FileSchema file
 timeout | typing.Optional[typing.Union[int, typing.Tuple]] | default is None | the timeout used by the rest client
 skip_deserialization | bool | default is False | when True, headers and body will be unset and an instance of api_client.ApiResponseWithoutDeserialization will be returned

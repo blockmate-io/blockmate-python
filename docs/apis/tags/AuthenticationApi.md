@@ -1,7 +1,7 @@
 <a name="__pageTop"></a>
 # blockmate.apis.tags.authentication_api.AuthenticationApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.blockmate.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,10 +21,10 @@ Authenticate developer
 import blockmate
 from blockmate.apis.tags import authentication_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.blockmate.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = blockmate.Configuration(
-    host = "http://localhost"
+    host = "https://api.blockmate.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -141,10 +141,10 @@ Authenticate project
 import blockmate
 from blockmate.apis.tags import authentication_api
 from pprint import pprint
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.blockmate.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = blockmate.Configuration(
-    host = "http://localhost"
+    host = "https://api.blockmate.io"
 )
 
 # The client must configure the authentication and authorization parameters

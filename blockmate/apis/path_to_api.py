@@ -23,6 +23,10 @@ from blockmate.apis.paths.v1_risk_transaction_score_details_case_id import V1Ris
 from blockmate.apis.paths.v1_exchangerate_current import V1ExchangerateCurrent
 from blockmate.apis.paths.v1_exchangerate_history import V1ExchangerateHistory
 from blockmate.apis.paths.v1_addressname_simple import V1AddressnameSimple
+from blockmate.apis.paths.v1_addressname_multi import V1AddressnameMulti
+from blockmate.apis.paths.v1_ens_address_from_domain import V1EnsAddressFromDomain
+from blockmate.apis.paths.v1_ens_domain_from_address import V1EnsDomainFromAddress
+from blockmate.apis.paths.v1_analytics_account_provider_account_account_id_stats import V1AnalyticsAccountProviderAccountAccountIdStats
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -49,6 +53,10 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.V1_EXCHANGERATE_CURRENT: V1ExchangerateCurrent,
         PathValues.V1_EXCHANGERATE_HISTORY: V1ExchangerateHistory,
         PathValues.V1_ADDRESSNAME_SIMPLE: V1AddressnameSimple,
+        PathValues.V1_ADDRESSNAME_MULTI: V1AddressnameMulti,
+        PathValues.V1_ENS_ADDRESS_FROM_DOMAIN: V1EnsAddressFromDomain,
+        PathValues.V1_ENS_DOMAIN_FROM_ADDRESS: V1EnsDomainFromAddress,
+        PathValues.V1_ANALYTICS_ACCOUNT_PROVIDER_ACCOUNT_ACCOUNT_ID_STATS: V1AnalyticsAccountProviderAccountAccountIdStats,
     }
 )
 
@@ -76,5 +84,9 @@ path_to_api = PathToApi(
         PathValues.V1_EXCHANGERATE_CURRENT: V1ExchangerateCurrent,
         PathValues.V1_EXCHANGERATE_HISTORY: V1ExchangerateHistory,
         PathValues.V1_ADDRESSNAME_SIMPLE: V1AddressnameSimple,
+        PathValues.V1_ADDRESSNAME_MULTI: V1AddressnameMulti,
+        PathValues.V1_ENS_ADDRESS_FROM_DOMAIN: V1EnsAddressFromDomain,
+        PathValues.V1_ENS_DOMAIN_FROM_ADDRESS: V1EnsDomainFromAddress,
+        PathValues.V1_ANALYTICS_ACCOUNT_PROVIDER_ACCOUNT_ACCOUNT_ID_STATS: V1AnalyticsAccountProviderAccountAccountIdStats,
     }
 )

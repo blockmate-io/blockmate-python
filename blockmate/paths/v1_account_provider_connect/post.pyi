@@ -349,7 +349,6 @@ class BaseApi(api_client.Api):
         path_params: RequestPathParams = frozendict.frozendict(),
         content_type: str = 'application/json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        host_index: typing.Optional[int] = None,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -394,8 +393,6 @@ class BaseApi(api_client.Api):
                 _fields = serialized_data['fields']
             elif 'body' in serialized_data:
                 _body = serialized_data['body']
-        host = self._get_host_oapg('connect_account', _servers, host_index)
-
         response = self.api_client.call_api(
             resource_path=used_path,
             method='post'.upper(),
@@ -403,7 +400,6 @@ class BaseApi(api_client.Api):
             fields=_fields,
             body=_body,
             auth_settings=_auth,
-            host=host,
             stream=stream,
             timeout=timeout,
         )
@@ -432,7 +428,6 @@ class ConnectAccount(BaseApi):
         path_params: RequestPathParams = frozendict.frozendict(),
         content_type: str = 'application/json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        host_index: typing.Optional[int] = None,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -445,7 +440,6 @@ class ConnectAccount(BaseApi):
             path_params=path_params,
             content_type=content_type,
             accept_content_types=accept_content_types,
-            host_index=host_index,
             stream=stream,
             timeout=timeout,
             skip_deserialization=skip_deserialization
@@ -461,7 +455,6 @@ class ApiForpost(BaseApi):
         path_params: RequestPathParams = frozendict.frozendict(),
         content_type: str = 'application/json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        host_index: typing.Optional[int] = None,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -474,7 +467,6 @@ class ApiForpost(BaseApi):
             path_params=path_params,
             content_type=content_type,
             accept_content_types=accept_content_types,
-            host_index=host_index,
             stream=stream,
             timeout=timeout,
             skip_deserialization=skip_deserialization

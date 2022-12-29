@@ -28,3 +28,7 @@ class PathValues(str, enum.Enum):
     V1_EXCHANGERATE_CURRENT = "/v1/exchangerate/current"
     V1_EXCHANGERATE_HISTORY = "/v1/exchangerate/history"
     V1_ADDRESSNAME_SIMPLE = "/v1/addressname/simple"
+    V1_ADDRESSNAME_MULTI = "/v1/addressname/multi"
+    V1_ENS_ADDRESS_FROM_DOMAIN = "/v1/ens/addressFromDomain"
+    V1_ENS_DOMAIN_FROM_ADDRESS = "/v1/ens/domainFromAddress"
+    V1_ANALYTICS_ACCOUNT_PROVIDER_ACCOUNT_ACCOUNT_ID_STATS = "/v1/analytics/{account_provider}/account/{account_id}/stats"

@@ -8,7 +8,9 @@ blockmate/apis/__init__.py
 blockmate/apis/tags/account_provider_info_api.py
 blockmate/apis/tags/address_name_and_category_info_api.py
 blockmate/apis/tags/aggregated_info_api.py
+blockmate/apis/tags/analytics_api.py
 blockmate/apis/tags/authentication_api.py
+blockmate/apis/tags/ens_api.py
 blockmate/apis/tags/exchange_rate_info_api.py
 blockmate/apis/tags/risk_info_api.py
 blockmate/apis/tags/user_management_api.py
@@ -59,7 +61,9 @@ blockmate/schemas.py
 docs/apis/tags/AccountProviderInfoApi.md
 docs/apis/tags/AddressNameAndCategoryInfoApi.md
 docs/apis/tags/AggregatedInfoApi.md
+docs/apis/tags/AnalyticsApi.md
 docs/apis/tags/AuthenticationApi.md
+docs/apis/tags/ENSApi.md
 docs/apis/tags/ExchangeRateInfoApi.md
 docs/apis/tags/RiskInfoApi.md
 docs/apis/tags/UserManagementApi.md

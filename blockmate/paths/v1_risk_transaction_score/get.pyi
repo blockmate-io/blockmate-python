@@ -204,7 +204,6 @@ class BaseApi(api_client.Api):
         self: api_client.Api,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        host_index: typing.Optional[int] = None,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -241,14 +240,11 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
 
-        host = self._get_host_oapg('get_transaction_risk_score', _servers, host_index)
-
         response = self.api_client.call_api(
             resource_path=used_path,
             method='get'.upper(),
             headers=_headers,
             auth_settings=_auth,
-            host=host,
             stream=stream,
             timeout=timeout,
         )
@@ -275,7 +271,6 @@ class GetTransactionRiskScore(BaseApi):
         self: BaseApi,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        host_index: typing.Optional[int] = None,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -286,7 +281,6 @@ class GetTransactionRiskScore(BaseApi):
         return self._get_transaction_risk_score_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
-            host_index=host_index,
             stream=stream,
             timeout=timeout,
             skip_deserialization=skip_deserialization
@@ -300,7 +294,6 @@ class ApiForget(BaseApi):
         self: BaseApi,
         query_params: RequestQueryParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        host_index: typing.Optional[int] = None,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
         skip_deserialization: bool = False,
@@ -311,7 +304,6 @@ class ApiForget(BaseApi):
         return self._get_transaction_risk_score_oapg(
             query_params=query_params,
             accept_content_types=accept_content_types,
-            host_index=host_index,
             stream=stream,
             timeout=timeout,
             skip_deserialization=skip_deserialization

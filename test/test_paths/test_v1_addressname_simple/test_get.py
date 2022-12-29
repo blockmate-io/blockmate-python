@@ -21,7 +21,7 @@ from .. import ApiTestMixin
 class TestV1AddressnameSimple(ApiTestMixin, unittest.TestCase):
     """
     V1AddressnameSimple unit test stubs
-        Get address name and category info  # noqa: E501
+        Get address name and category info for single address  # noqa: E501
     """
     _configuration = configuration.Configuration()
 

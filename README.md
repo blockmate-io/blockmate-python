@@ -141,10 +141,10 @@ import time
 import blockmate
 from pprint import pprint
 from blockmate.apis import account_provider_info_api
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.blockmate.io
 # See configuration.py for a list of all supported configuration parameters.
 configuration = blockmate.Configuration(
-    host = "http://localhost"
+    host = "https://api.blockmate.io"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -178,22 +178,26 @@ any_type = dict(
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.blockmate.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountProviderInfoApi* | [**connect_account**](docs/apis/tags/AccountProviderInfoApi.md#connect_account) | **post** /v1/{account_provider}/connect | Connect new account
 *AccountProviderInfoApi* | [**delete_account**](docs/apis/tags/AccountProviderInfoApi.md#delete_account) | **delete** /v1/{account_provider}/account/{account_id} | Delete account
 *AccountProviderInfoApi* | [**get_account_hint**](docs/apis/tags/AccountProviderInfoApi.md#get_account_hint) | **get** /v1/{account_provider}/connect | Get account hint
-*AddressNameAndCategoryInfoApi* | [**get_address_name_info**](docs/apis/tags/AddressNameAndCategoryInfoApi.md#get_address_name_info) | **get** /v1/addressname/simple | Get address name and category info
+*AddressNameAndCategoryInfoApi* | [**get_address_name_info_multi**](docs/apis/tags/AddressNameAndCategoryInfoApi.md#get_address_name_info_multi) | **post** /v1/addressname/multi | Get address name and category info for multiple addresses
+*AddressNameAndCategoryInfoApi* | [**get_address_name_info_single**](docs/apis/tags/AddressNameAndCategoryInfoApi.md#get_address_name_info_single) | **get** /v1/addressname/simple | Get address name and category info for single address
 *AggregatedInfoApi* | [**account_provider_hints_list**](docs/apis/tags/AggregatedInfoApi.md#account_provider_hints_list) | **get** /v1/aggregate/account_provider_hints | Get list of account providers hints
 *AggregatedInfoApi* | [**account_providers_list**](docs/apis/tags/AggregatedInfoApi.md#account_providers_list) | **get** /v1/aggregate/account_providers | Get list of account providers
 *AggregatedInfoApi* | [**accounts**](docs/apis/tags/AggregatedInfoApi.md#accounts) | **get** /v1/aggregate/accounts | List accounts
 *AggregatedInfoApi* | [**balance**](docs/apis/tags/AggregatedInfoApi.md#balance) | **get** /v1/aggregate/balance | Get balance
 *AggregatedInfoApi* | [**n_ft_metadata**](docs/apis/tags/AggregatedInfoApi.md#n_ft_metadata) | **get** /v1/aggregate/nft_metadata | Get NFT metadata
 *AggregatedInfoApi* | [**transactions**](docs/apis/tags/AggregatedInfoApi.md#transactions) | **get** /v1/aggregate/transactions | Get transactions
+*AnalyticsApi* | [**get_analytics**](docs/apis/tags/AnalyticsApi.md#get_analytics) | **get** /v1/analytics/{account_provider}/account/{account_id}/stats | Get analytics focused on gaming
 *AuthenticationApi* | [**user_api_authenticate_developer**](docs/apis/tags/AuthenticationApi.md#user_api_authenticate_developer) | **get** /v1/auth/developer | Authenticate developer
 *AuthenticationApi* | [**user_api_authenticate_project**](docs/apis/tags/AuthenticationApi.md#user_api_authenticate_project) | **get** /v1/auth | Authenticate project
+*ENSApi* | [**get_address_from_domain**](docs/apis/tags/ENSApi.md#get_address_from_domain) | **get** /v1/ens/addressFromDomain | Get address for specified ENS domain
+*ENSApi* | [**get_domain_from_address**](docs/apis/tags/ENSApi.md#get_domain_from_address) | **get** /v1/ens/domainFromAddress | Get domain and metadata for specified ENS address
 *ExchangeRateInfoApi* | [**get_current_exchange_rate**](docs/apis/tags/ExchangeRateInfoApi.md#get_current_exchange_rate) | **get** /v1/exchangerate/current | Get current exchange rate
 *ExchangeRateInfoApi* | [**get_historical_exchange_rate**](docs/apis/tags/ExchangeRateInfoApi.md#get_historical_exchange_rate) | **get** /v1/exchangerate/history | Get historical exchange rate
 *RiskInfoApi* | [**get_address_risk_score**](docs/apis/tags/RiskInfoApi.md#get_address_risk_score) | **get** /v1/risk/score | Get address risk score
@@ -252,6 +256,8 @@ Class | Method | HTTP request | Description
 
 
 ## Author
+
+
 
 
 
