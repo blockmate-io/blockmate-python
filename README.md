@@ -193,7 +193,10 @@ Class | Method | HTTP request | Description
 *AggregatedInfoApi* | [**balance**](docs/apis/tags/AggregatedInfoApi.md#balance) | **get** /v1/aggregate/balance | Get balance
 *AggregatedInfoApi* | [**n_ft_metadata**](docs/apis/tags/AggregatedInfoApi.md#n_ft_metadata) | **get** /v1/aggregate/nft_metadata | Get NFT metadata
 *AggregatedInfoApi* | [**transactions**](docs/apis/tags/AggregatedInfoApi.md#transactions) | **get** /v1/aggregate/transactions | Get transactions
-*AnalyticsApi* | [**get_analytics**](docs/apis/tags/AnalyticsApi.md#get_analytics) | **get** /v1/analytics/{account_provider}/account/{account_id}/stats | Get analytics focused on gaming
+*AnalyticsApi* | [**get_account_analytics**](docs/apis/tags/AnalyticsApi.md#get_account_analytics) | **get** /v1/analytics/{account_provider}/account/{account_id}/stats | Get analytics focused on gaming for specified account and provider
+*AnalyticsApi* | [**get_project_analytics**](docs/apis/tags/AnalyticsApi.md#get_project_analytics) | **get** /v1/analytics/project/stats | Get analytics focused on gaming for whole project
+*AnalyticsApi* | [**get_provider_analytics**](docs/apis/tags/AnalyticsApi.md#get_provider_analytics) | **get** /v1/analytics/{account_provider}/stats | Get analytics focused on gaming for specified provider
+*AnalyticsApi* | [**get_user_analytics**](docs/apis/tags/AnalyticsApi.md#get_user_analytics) | **get** /v1/analytics/user/stats | Get analytics focused on gaming for this user
 *AuthenticationApi* | [**user_api_authenticate_developer**](docs/apis/tags/AuthenticationApi.md#user_api_authenticate_developer) | **get** /v1/auth/developer | Authenticate developer
 *AuthenticationApi* | [**user_api_authenticate_project**](docs/apis/tags/AuthenticationApi.md#user_api_authenticate_project) | **get** /v1/auth | Authenticate project
 *ENSApi* | [**get_address_from_domain**](docs/apis/tags/ENSApi.md#get_address_from_domain) | **get** /v1/ens/addressFromDomain | Get address for specified ENS domain
@@ -219,6 +222,7 @@ Class | Method | HTTP request | Description
  - [AccountProviderHint](docs/models/AccountProviderHint.md)
  - [AddressRiskReport](docs/models/AddressRiskReport.md)
  - [Amount](docs/models/Amount.md)
+ - [Analytics](docs/models/Analytics.md)
  - [ExchangeRate](docs/models/ExchangeRate.md)
  - [Metadata](docs/models/Metadata.md)
  - [Movement](docs/models/Movement.md)

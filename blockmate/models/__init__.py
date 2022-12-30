@@ -15,6 +15,7 @@ from blockmate.model.account_provider import AccountProvider
 from blockmate.model.account_provider_hint import AccountProviderHint
 from blockmate.model.address_risk_report import AddressRiskReport
 from blockmate.model.amount import Amount
+from blockmate.model.analytics import Analytics
 from blockmate.model.exchange_rate import ExchangeRate
 from blockmate.model.metadata import Metadata
 from blockmate.model.movement import Movement

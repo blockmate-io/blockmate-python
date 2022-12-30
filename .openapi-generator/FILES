@@ -25,6 +25,8 @@ blockmate/model/address_risk_report.py
 blockmate/model/address_risk_report.pyi
 blockmate/model/amount.py
 blockmate/model/amount.pyi
+blockmate/model/analytics.py
+blockmate/model/analytics.pyi
 blockmate/model/exchange_rate.py
 blockmate/model/exchange_rate.pyi
 blockmate/model/metadata.py
@@ -71,6 +73,7 @@ docs/models/AccountProvider.md
 docs/models/AccountProviderHint.md
 docs/models/AddressRiskReport.md
 docs/models/Amount.md
+docs/models/Analytics.md
 docs/models/ExchangeRate.md
 docs/models/Metadata.md
 docs/models/Movement.md

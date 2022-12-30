@@ -12,16 +12,16 @@ from unittest.mock import patch
 import urllib3
 
 import blockmate
-from blockmate.paths.v1_analytics_account_provider_account_account_id_stats import get  # noqa: E501
+from blockmate.paths.v1_analytics_account_provider_stats import get  # noqa: E501
 from blockmate import configuration, schemas, api_client
 
 from .. import ApiTestMixin
 
 
-class TestV1AnalyticsAccountProviderAccountAccountIdStats(ApiTestMixin, unittest.TestCase):
+class TestV1AnalyticsAccountProviderStats(ApiTestMixin, unittest.TestCase):
     """
-    V1AnalyticsAccountProviderAccountAccountIdStats unit test stubs
-        Get analytics focused on gaming for specified account and provider  # noqa: E501
+    V1AnalyticsAccountProviderStats unit test stubs
+        Get analytics focused on gaming for specified provider  # noqa: E501
     """
     _configuration = configuration.Configuration()
 

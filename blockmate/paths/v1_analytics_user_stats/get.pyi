@@ -27,76 +27,38 @@ from blockmate import schemas  # noqa: F401
 
 from blockmate.model.analytics import Analytics
 
-from . import path
-
-# path params
-AccountProviderSchema = schemas.StrSchema
-AccountIdSchema = schemas.StrSchema
-RequestRequiredPathParams = typing_extensions.TypedDict(
-    'RequestRequiredPathParams',
-    {
-        'account_provider': typing.Union[AccountProviderSchema, str, ],
-        'account_id': typing.Union[AccountIdSchema, str, ],
-    }
-)
-RequestOptionalPathParams = typing_extensions.TypedDict(
-    'RequestOptionalPathParams',
-    {
-    },
-    total=False
-)
 
 
-class RequestPathParams(RequestRequiredPathParams, RequestOptionalPathParams):
-    pass
+class SchemaFor200ResponseBodyApplicationJson(
+    schemas.DictSchema
+):
 
 
-request_path_account_provider = api_client.PathParameter(
-    name="account_provider",
-    style=api_client.ParameterStyle.SIMPLE,
-    schema=AccountProviderSchema,
-    required=True,
-)
-request_path_account_id = api_client.PathParameter(
-    name="account_id",
-    style=api_client.ParameterStyle.SIMPLE,
-    schema=AccountIdSchema,
-    required=True,
-)
-_auth = [
-    'UserJWT',
-]
-SchemaFor200ResponseBodyApplicationJson = Analytics
+    class MetaOapg:
+        
+        @staticmethod
+        def additional_properties() -> typing.Type['Analytics']:
+            return Analytics
+    
+    def __getitem__(self, name: typing.Union[str, ]) -> 'Analytics':
+        # dict_instance[name] accessor
+        return super().__getitem__(name)
+    
+    def get_item_oapg(self, name: typing.Union[str, ]) -> 'Analytics':
+        return super().get_item_oapg(name)
 
-
-@dataclass
-class ApiResponseFor200(api_client.ApiResponse):
-    response: urllib3.HTTPResponse
-    body: typing.Union[
-        SchemaFor200ResponseBodyApplicationJson,
-    ]
-    headers: schemas.Unset = schemas.unset
-
-
-_response_for_200 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor200,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyApplicationJson),
-    },
-)
-
-
-@dataclass
-class ApiResponseFor204(api_client.ApiResponse):
-    response: urllib3.HTTPResponse
-    body: schemas.Unset = schemas.unset
-    headers: schemas.Unset = schemas.unset
-
-
-_response_for_204 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor204,
-)
+    def __new__(
+        cls,
+        *args: typing.Union[dict, frozendict.frozendict, ],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+        **kwargs: 'Analytics',
+    ) -> 'SchemaFor200ResponseBodyApplicationJson':
+        return super().__new__(
+            cls,
+            *args,
+            _configuration=_configuration,
+            **kwargs,
+        )
 
 
 class SchemaFor400ResponseBodyApplicationJson(
@@ -149,24 +111,6 @@ class SchemaFor400ResponseBodyApplicationJson(
         )
 
 
-@dataclass
-class ApiResponseFor400(api_client.ApiResponse):
-    response: urllib3.HTTPResponse
-    body: typing.Union[
-        SchemaFor400ResponseBodyApplicationJson,
-    ]
-    headers: schemas.Unset = schemas.unset
-
-
-_response_for_400 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor400,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor400ResponseBodyApplicationJson),
-    },
-)
-
-
 class SchemaFor401ResponseBodyApplicationJson(
     schemas.DictSchema
 ):
@@ -215,30 +159,6 @@ class SchemaFor401ResponseBodyApplicationJson(
             _configuration=_configuration,
             **kwargs,
         )
-
-
-@dataclass
-class ApiResponseFor401(api_client.ApiResponse):
-    response: urllib3.HTTPResponse
-    body: typing.Union[
-        SchemaFor401ResponseBodyApplicationJson,
-    ]
-    headers: schemas.Unset = schemas.unset
-
-
-_response_for_401 = api_client.OpenApiResponse(
-    response_cls=ApiResponseFor401,
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaFor401ResponseBodyApplicationJson),
-    },
-)
-_status_code_to_response = {
-    '200': _response_for_200,
-    '204': _response_for_204,
-    '400': _response_for_400,
-    '401': _response_for_401,
-}
 _all_accept_content_types = (
     'application/json',
 )
@@ -246,9 +166,8 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
 
-    def _get_account_analytics_oapg(
+    def _get_user_analytics_oapg(
         self: api_client.Api,
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -259,27 +178,12 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization
     ]:
         """
-        Get analytics focused on gaming for specified account and provider
+        Get analytics focused on gaming for this user
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
         """
-        self._verify_typed_dict_inputs_oapg(RequestPathParams, path_params)
         used_path = path.value
-
-        _path_params = {}
-        for parameter in (
-            request_path_account_provider,
-            request_path_account_id,
-        ):
-            parameter_data = path_params.get(parameter.name, schemas.unset)
-            if parameter_data is schemas.unset:
-                continue
-            serialized_data = parameter.serialize(parameter_data)
-            _path_params.update(serialized_data)
-
-        for k, v in _path_params.items():
-            used_path = used_path.replace('{%s}' % k, v)
 
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
@@ -311,12 +215,11 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class GetAccountAnalytics(BaseApi):
+class GetUserAnalytics(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    def get_account_analytics(
+    def get_user_analytics(
         self: BaseApi,
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -326,8 +229,7 @@ class GetAccountAnalytics(BaseApi):
         ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._get_account_analytics_oapg(
-            path_params=path_params,
+        return self._get_user_analytics_oapg(
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,
@@ -340,7 +242,6 @@ class ApiForget(BaseApi):
 
     def get(
         self: BaseApi,
-        path_params: RequestPathParams = frozendict.frozendict(),
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -350,8 +251,7 @@ class ApiForget(BaseApi):
         ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._get_account_analytics_oapg(
-            path_params=path_params,
+        return self._get_user_analytics_oapg(
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,

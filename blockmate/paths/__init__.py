@@ -31,4 +31,7 @@ class PathValues(str, enum.Enum):
     V1_ADDRESSNAME_MULTI = "/v1/addressname/multi"
     V1_ENS_ADDRESS_FROM_DOMAIN = "/v1/ens/addressFromDomain"
     V1_ENS_DOMAIN_FROM_ADDRESS = "/v1/ens/domainFromAddress"
+    V1_ANALYTICS_PROJECT_STATS = "/v1/analytics/project/stats"
+    V1_ANALYTICS_USER_STATS = "/v1/analytics/user/stats"
+    V1_ANALYTICS_ACCOUNT_PROVIDER_STATS = "/v1/analytics/{account_provider}/stats"
     V1_ANALYTICS_ACCOUNT_PROVIDER_ACCOUNT_ACCOUNT_ID_STATS = "/v1/analytics/{account_provider}/account/{account_id}/stats"
