@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Get analytics focused on gaming
 
-Get analytics focused on gaming. All empty values are omitted from the response.
+Get analytics focused on gaming. All empty values are omitted from the response. Values are recalculated once per day.
 
 ### Example
 
@@ -94,6 +94,7 @@ Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
 200 | [ApiResponseFor200](#get_analytics.ApiResponseFor200) | OK
+204 | [ApiResponseFor204](#get_analytics.ApiResponseFor204) | No Content (happens when account is connected, but values were not recalculated yet)
 400 | [ApiResponseFor400](#get_analytics.ApiResponseFor400) | Bad Request
 401 | [ApiResponseFor401](#get_analytics.ApiResponseFor401) | Unauthorized
 
@@ -291,6 +292,13 @@ Key | Input Type | Accessed Type | Description | Notes
 **max_balance_7_gaming** | decimal.Decimal, int, float,  | decimal.Decimal,  | Maximum gaming balance during last week | [optional] 
 **max_balance_7_gambling** | decimal.Decimal, int, float,  | decimal.Decimal,  | Maximum gambling balance during last week | [optional] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
+
+#### get_analytics.ApiResponseFor204
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+response | urllib3.HTTPResponse | Raw response |
+body | Unset | body was not defined |
+headers | Unset | headers were not defined |
 
 #### get_analytics.ApiResponseFor400
 Name | Type | Description  | Notes

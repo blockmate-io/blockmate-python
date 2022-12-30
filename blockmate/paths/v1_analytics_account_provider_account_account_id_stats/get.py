@@ -1802,6 +1802,18 @@ _response_for_200 = api_client.OpenApiResponse(
 )
 
 
+@dataclass
+class ApiResponseFor204(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_204 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor204,
+)
+
+
 class SchemaFor400ResponseBodyApplicationJson(
     schemas.DictSchema
 ):
@@ -1938,6 +1950,7 @@ _response_for_401 = api_client.OpenApiResponse(
 )
 _status_code_to_response = {
     '200': _response_for_200,
+    '204': _response_for_204,
     '400': _response_for_400,
     '401': _response_for_401,
 }
@@ -1957,6 +1970,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization
     ]:
         """
@@ -2024,6 +2038,7 @@ class GetAnalytics(BaseApi):
         skip_deserialization: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization
     ]:
         return self._get_analytics_oapg(
@@ -2047,6 +2062,7 @@ class ApiForget(BaseApi):
         skip_deserialization: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization
     ]:
         return self._get_analytics_oapg(

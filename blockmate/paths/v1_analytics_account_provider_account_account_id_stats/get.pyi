@@ -1862,6 +1862,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization
     ]:
         """
@@ -1929,6 +1930,7 @@ class GetAnalytics(BaseApi):
         skip_deserialization: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization
     ]:
         return self._get_analytics_oapg(
@@ -1952,6 +1954,7 @@ class ApiForget(BaseApi):
         skip_deserialization: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
+        ApiResponseFor204,
         api_client.ApiResponseWithoutDeserialization
     ]:
         return self._get_analytics_oapg(
