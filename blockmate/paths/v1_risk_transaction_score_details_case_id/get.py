@@ -56,6 +56,7 @@ request_path_case_id = api_client.PathParameter(
     required=True,
 )
 _auth = [
+    'ProjectJWT',
     'UserJWT',
 ]
 SchemaFor200ResponseBodyApplicationJson = TransactionRiskReport

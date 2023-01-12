@@ -27,7 +27,32 @@ from blockmate import schemas  # noqa: F401
 
 from blockmate.model.account_provider_hint import AccountProviderHint
 
-SchemaFor200ResponseBodyApplicationJson = AccountProviderHint
+
+
+class SchemaFor200ResponseBodyApplicationJson(
+    schemas.ListSchema
+):
+
+
+    class MetaOapg:
+        
+        @staticmethod
+        def items() -> typing.Type['AccountProviderHint']:
+            return AccountProviderHint
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple['AccountProviderHint'], typing.List['AccountProviderHint']],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'SchemaFor200ResponseBodyApplicationJson':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> 'AccountProviderHint':
+        return super().__getitem__(i)
 
 
 class SchemaFor400ResponseBodyApplicationJson(

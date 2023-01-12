@@ -66,6 +66,7 @@ request_query_days = api_client.QueryParameter(
     explode=True,
 )
 _auth = [
+    'ProjectJWT',
     'UserJWT',
 ]
 

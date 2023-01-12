@@ -16,6 +16,7 @@ Get address for specified ENS domain
 
 ### Example
 
+* Bearer (JWT) Authentication (ProjectJWT):
 * Bearer (JWT) Authentication (UserJWT):
 ```python
 import blockmate
@@ -31,6 +32,11 @@ configuration = blockmate.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): ProjectJWT
+configuration = blockmate.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Configure Bearer authorization (JWT): UserJWT
 configuration = blockmate.Configuration(
@@ -150,7 +156,7 @@ Key | Input Type | Accessed Type | Description | Notes
 
 ### Authorization
 
-[UserJWT](../../../README.md#UserJWT)
+[ProjectJWT](../../../README.md#ProjectJWT), [UserJWT](../../../README.md#UserJWT)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -162,6 +168,7 @@ Get domain and metadata for specified ENS address
 
 ### Example
 
+* Bearer (JWT) Authentication (ProjectJWT):
 * Bearer (JWT) Authentication (UserJWT):
 ```python
 import blockmate
@@ -177,6 +184,11 @@ configuration = blockmate.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): ProjectJWT
+configuration = blockmate.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Configure Bearer authorization (JWT): UserJWT
 configuration = blockmate.Configuration(
@@ -252,15 +264,17 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
 **domain** | str,  | str,  |  | [optional] 
-**[metadata](#metadata)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | [optional] 
+**[metadata](#metadata)** | dict, frozendict.frozendict,  | frozendict.frozendict,  | The response format is dependent on a third-party, so it can change in the future. | [optional] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
 
 # metadata
 
+The response format is dependent on a third-party, so it can change in the future.
+
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+dict, frozendict.frozendict,  | frozendict.frozendict,  | The response format is dependent on a third-party, so it can change in the future. | 
 
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes
@@ -375,7 +389,7 @@ Key | Input Type | Accessed Type | Description | Notes
 
 ### Authorization
 
-[UserJWT](../../../README.md#UserJWT)
+[ProjectJWT](../../../README.md#ProjectJWT), [UserJWT](../../../README.md#UserJWT)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

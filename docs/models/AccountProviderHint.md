@@ -13,6 +13,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **account_type** | str,  | str,  |  | must be one of ["crypto_wallet", "crypto_exchange", "crypto_nft", ] 
 **account_name** | str,  | str,  |  | 
 **account_url** | str,  | str,  |  | 
+**icon** | str,  | str,  |  | 
 **description** | str,  | str,  |  | 
 **[fields](#fields)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
 **oauth** | bool,  | BoolClass,  |  | 

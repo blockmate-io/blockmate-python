@@ -107,12 +107,14 @@ class SchemaFor200ResponseBodyApplicationJson(
                         **kwargs,
                     )
             oauth = schemas.BoolSchema
+            icon = schemas.StrSchema
             __annotations__ = {
                 "description": description,
                 "url": url,
                 "intro": intro,
                 "fields": fields,
                 "oauth": oauth,
+                "icon": icon,
             }
     
     intro: MetaOapg.properties.intro
@@ -137,9 +139,12 @@ class SchemaFor200ResponseBodyApplicationJson(
     def __getitem__(self, name: typing_extensions.Literal["oauth"]) -> MetaOapg.properties.oauth: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["icon"]) -> MetaOapg.properties.icon: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["description", "url", "intro", "fields", "oauth", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["description", "url", "intro", "fields", "oauth", "icon", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -160,9 +165,12 @@ class SchemaFor200ResponseBodyApplicationJson(
     def get_item_oapg(self, name: typing_extensions.Literal["oauth"]) -> MetaOapg.properties.oauth: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["icon"]) -> typing.Union[MetaOapg.properties.icon, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["description", "url", "intro", "fields", "oauth", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["description", "url", "intro", "fields", "oauth", "icon", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -174,6 +182,7 @@ class SchemaFor200ResponseBodyApplicationJson(
         fields: typing.Union[MetaOapg.properties.fields, dict, frozendict.frozendict, ],
         oauth: typing.Union[MetaOapg.properties.oauth, bool, ],
         url: typing.Union[MetaOapg.properties.url, str, ],
+        icon: typing.Union[MetaOapg.properties.icon, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'SchemaFor200ResponseBodyApplicationJson':
@@ -185,6 +194,7 @@ class SchemaFor200ResponseBodyApplicationJson(
             fields=fields,
             oauth=oauth,
             url=url,
+            icon=icon,
             _configuration=_configuration,
             **kwargs,
         )

@@ -31,6 +31,7 @@ from . import path
 
 # query params
 CurrencySchema = schemas.StrSchema
+AccountFilterSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
     {
@@ -40,6 +41,7 @@ RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
         'currency': typing.Union[CurrencySchema, str, ],
+        'account-filter': typing.Union[AccountFilterSchema, str, ],
     },
     total=False
 )
@@ -53,6 +55,12 @@ request_query_currency = api_client.QueryParameter(
     name="currency",
     style=api_client.ParameterStyle.FORM,
     schema=CurrencySchema,
+    explode=True,
+)
+request_query_account_filter = api_client.QueryParameter(
+    name="account-filter",
+    style=api_client.ParameterStyle.FORM,
+    schema=AccountFilterSchema,
     explode=True,
 )
 _auth = [
@@ -671,6 +679,7 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_currency,
+            request_query_account_filter,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

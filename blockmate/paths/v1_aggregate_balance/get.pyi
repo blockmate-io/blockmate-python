@@ -29,6 +29,7 @@ from blockmate.model.amount import Amount
 
 # query params
 CurrencySchema = schemas.StrSchema
+AccountFilterSchema = schemas.StrSchema
 
 
 class SchemaFor200ResponseBodyApplicationJson(
@@ -575,6 +576,7 @@ class BaseApi(api_client.Api):
         prefix_separator_iterator = None
         for parameter in (
             request_query_currency,
+            request_query_account_filter,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:

@@ -87,6 +87,7 @@ request_body_request_body = api_client.RequestBody(
     },
 )
 _auth = [
+    'ProjectJWT',
     'UserJWT',
 ]
 

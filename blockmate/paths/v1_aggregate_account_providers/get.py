@@ -32,7 +32,32 @@ from . import path
 _auth = [
     'UserJWT',
 ]
-SchemaFor200ResponseBodyApplicationJson = AccountProvider
+
+
+class SchemaFor200ResponseBodyApplicationJson(
+    schemas.ListSchema
+):
+
+
+    class MetaOapg:
+        
+        @staticmethod
+        def items() -> typing.Type['AccountProvider']:
+            return AccountProvider
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple['AccountProvider'], typing.List['AccountProvider']],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'SchemaFor200ResponseBodyApplicationJson':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> 'AccountProvider':
+        return super().__getitem__(i)
 
 
 @dataclass

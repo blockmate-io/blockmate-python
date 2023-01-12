@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **account_provider_hints_list**
 <a name="account_provider_hints_list"></a>
-> AccountProviderHint account_provider_hints_list()
+> [AccountProviderHint] account_provider_hints_list()
 
 Get list of account providers hints
 
@@ -74,10 +74,16 @@ body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
 headers | Unset | headers were not defined |
 
 # SchemaFor200ResponseBodyApplicationJson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**AccountProviderHint**](../../models/AccountProviderHint.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+[**AccountProviderHint**]({{complexTypePrefix}}AccountProviderHint.md) | [**AccountProviderHint**]({{complexTypePrefix}}AccountProviderHint.md) | [**AccountProviderHint**]({{complexTypePrefix}}AccountProviderHint.md) |  | 
 
 #### account_provider_hints_list.ApiResponseFor400
 Name | Type | Description  | Notes
@@ -127,7 +133,7 @@ Key | Input Type | Accessed Type | Description | Notes
 
 # **account_providers_list**
 <a name="account_providers_list"></a>
-> AccountProvider account_providers_list()
+> [AccountProvider] account_providers_list()
 
 Get list of account providers
 
@@ -187,10 +193,16 @@ body | typing.Union[SchemaFor200ResponseBodyApplicationJson, ] |  |
 headers | Unset | headers were not defined |
 
 # SchemaFor200ResponseBodyApplicationJson
-Type | Description  | Notes
-------------- | ------------- | -------------
-[**AccountProvider**](../../models/AccountProvider.md) |  | 
 
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+list, tuple,  | tuple,  |  | 
+
+### Tuple Items
+Class Name | Input Type | Accessed Type | Description | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+[**AccountProvider**]({{complexTypePrefix}}AccountProvider.md) | [**AccountProvider**]({{complexTypePrefix}}AccountProvider.md) | [**AccountProvider**]({{complexTypePrefix}}AccountProvider.md) |  | 
 
 #### account_providers_list.ApiResponseFor400
 Name | Type | Description  | Notes
@@ -413,6 +425,7 @@ with blockmate.ApiClient(configuration) as api_client:
     # example passing only optional values
     query_params = {
         'currency': "USD",
+        'account-filter': "497f6eca-6276-4993-bfeb-53cbbbba6f08",
     }
     try:
         # Get balance
@@ -439,9 +452,17 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 currency | CurrencySchema | | optional
+account-filter | AccountFilterSchema | | optional
 
 
 # CurrencySchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | 
+
+# AccountFilterSchema
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
@@ -453,7 +474,7 @@ str,  | str,  |  |
 Code | Class | Description
 ------------- | ------------- | -------------
 n/a | api_client.ApiResponseWithoutDeserialization | When skip_deserialization is True this response is returned
-200 | [ApiResponseFor200](#balance.ApiResponseFor200) | Cumulated balance fo user accounts.
+200 | [ApiResponseFor200](#balance.ApiResponseFor200) | Cumulated balance for user accounts.
 400 | [ApiResponseFor400](#balance.ApiResponseFor400) | Bad Request
 401 | [ApiResponseFor401](#balance.ApiResponseFor401) | Unauthorized
 
@@ -679,14 +700,16 @@ dict, frozendict.frozendict,  | frozendict.frozendict,  |  |
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | ------------- | -------------
-**[any_string_name](#any_string_name)** | dict, frozendict.frozendict,  | frozendict.frozendict,  | any string name can be used but the value must be the correct type | [optional] 
+**[any_string_name](#any_string_name)** | dict, frozendict.frozendict,  | frozendict.frozendict,  | any string name can be used but the value must be the correct type The response format is dependent on a third-party, so it can change in the future. | [optional] 
 
 # any_string_name
+
+The response format is dependent on a third-party, so it can change in the future.
 
 ## Model Type Info
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
+dict, frozendict.frozendict,  | frozendict.frozendict,  | The response format is dependent on a third-party, so it can change in the future. | 
 
 ### Dictionary Keys
 Key | Input Type | Accessed Type | Description | Notes

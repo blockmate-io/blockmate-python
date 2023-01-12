@@ -6,7 +6,6 @@ import enum
 
 
 class TagValues(str, enum.Enum):
-    ACCOUNT_PROVIDER_INFO = "Account provider info"
     ADDRESS_NAME_AND_CATEGORY_INFO = "Address name and category info"
     AGGREGATED_INFO = "Aggregated info"
     ANALYTICS = "Analytics"
@@ -14,4 +13,5 @@ class TagValues(str, enum.Enum):
     ENS = "ENS"
     EXCHANGE_RATE_INFO = "Exchange rate info"
     RISK_INFO = "Risk info"
+    USER_ACCOUNT_MANAGEMENT = "User account management"
     USER_MANAGEMENT = "User management"

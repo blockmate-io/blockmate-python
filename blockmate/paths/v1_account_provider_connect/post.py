@@ -130,7 +130,7 @@ request_body_any_type = api_client.RequestBody(
     },
 )
 _auth = [
-    'ProjectToken',
+    'UserJWT',
 ]
 
 

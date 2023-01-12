@@ -62,6 +62,7 @@ request_query_chain = api_client.QueryParameter(
     explode=True,
 )
 _auth = [
+    'ProjectJWT',
     'UserJWT',
 ]
 

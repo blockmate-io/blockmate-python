@@ -16,6 +16,7 @@ Get current exchange rate
 
 ### Example
 
+* Bearer (JWT) Authentication (ProjectJWT):
 * Bearer (JWT) Authentication (UserJWT):
 ```python
 import blockmate
@@ -32,6 +33,11 @@ configuration = blockmate.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): ProjectJWT
+configuration = blockmate.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Configure Bearer authorization (JWT): UserJWT
 configuration = blockmate.Configuration(
@@ -150,7 +156,7 @@ Key | Input Type | Accessed Type | Description | Notes
 
 ### Authorization
 
-[UserJWT](../../../README.md#UserJWT)
+[ProjectJWT](../../../README.md#ProjectJWT), [UserJWT](../../../README.md#UserJWT)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
@@ -162,6 +168,7 @@ Get historical exchange rate
 
 ### Example
 
+* Bearer (JWT) Authentication (ProjectJWT):
 * Bearer (JWT) Authentication (UserJWT):
 ```python
 import blockmate
@@ -178,6 +185,11 @@ configuration = blockmate.Configuration(
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
+
+# Configure Bearer authorization (JWT): ProjectJWT
+configuration = blockmate.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
 
 # Configure Bearer authorization (JWT): UserJWT
 configuration = blockmate.Configuration(
@@ -305,7 +317,7 @@ Key | Input Type | Accessed Type | Description | Notes
 
 ### Authorization
 
-[UserJWT](../../../README.md#UserJWT)
+[ProjectJWT](../../../README.md#ProjectJWT), [UserJWT](../../../README.md#UserJWT)
 
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 

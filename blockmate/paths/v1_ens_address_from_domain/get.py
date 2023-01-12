@@ -55,6 +55,7 @@ request_query_domain = api_client.QueryParameter(
     explode=True,
 )
 _auth = [
+    'ProjectJWT',
     'UserJWT',
 ]
 

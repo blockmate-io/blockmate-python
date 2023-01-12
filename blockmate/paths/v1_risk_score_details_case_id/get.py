@@ -56,6 +56,7 @@ request_path_case_id = api_client.PathParameter(
     required=True,
 )
 _auth = [
+    'ProjectJWT',
     'UserJWT',
 ]
 SchemaFor200ResponseBodyApplicationJson = AddressRiskReport
@@ -213,10 +214,23 @@ _response_for_401 = api_client.OpenApiResponse(
             schema=SchemaFor401ResponseBodyApplicationJson),
     },
 )
+
+
+@dataclass
+class ApiResponseFor404(api_client.ApiResponse):
+    response: urllib3.HTTPResponse
+    body: schemas.Unset = schemas.unset
+    headers: schemas.Unset = schemas.unset
+
+
+_response_for_404 = api_client.OpenApiResponse(
+    response_cls=ApiResponseFor404,
+)
 _status_code_to_response = {
     '200': _response_for_200,
     '400': _response_for_400,
     '401': _response_for_401,
+    '404': _response_for_404,
 }
 _all_accept_content_types = (
     'application/json',

@@ -62,6 +62,7 @@ request_query_chain = api_client.QueryParameter(
     explode=True,
 )
 _auth = [
+    'ProjectJWT',
     'UserJWT',
 ]
 
@@ -74,7 +75,7 @@ class SchemaFor200ResponseBodyApplicationJson(
     class MetaOapg:
         
         class properties:
-            address = schemas.StrSchema
+            transaction = schemas.StrSchema
             
             
             class risk(
@@ -86,12 +87,12 @@ class SchemaFor200ResponseBodyApplicationJson(
                     inclusive_maximum = 100
                     inclusive_minimum = 0
             __annotations__ = {
-                "address": address,
+                "transaction": transaction,
                 "risk": risk,
             }
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["address"]) -> MetaOapg.properties.address: ...
+    def __getitem__(self, name: typing_extensions.Literal["transaction"]) -> MetaOapg.properties.transaction: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["risk"]) -> MetaOapg.properties.risk: ...
@@ -99,13 +100,13 @@ class SchemaFor200ResponseBodyApplicationJson(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["address", "risk", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["transaction", "risk", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["address"]) -> typing.Union[MetaOapg.properties.address, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["transaction"]) -> typing.Union[MetaOapg.properties.transaction, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["risk"]) -> typing.Union[MetaOapg.properties.risk, schemas.Unset]: ...
@@ -113,14 +114,14 @@ class SchemaFor200ResponseBodyApplicationJson(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["address", "risk", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["transaction", "risk", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        address: typing.Union[MetaOapg.properties.address, str, schemas.Unset] = schemas.unset,
+        transaction: typing.Union[MetaOapg.properties.transaction, str, schemas.Unset] = schemas.unset,
         risk: typing.Union[MetaOapg.properties.risk, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -128,7 +129,7 @@ class SchemaFor200ResponseBodyApplicationJson(
         return super().__new__(
             cls,
             *args,
-            address=address,
+            transaction=transaction,
             risk=risk,
             _configuration=_configuration,
             **kwargs,

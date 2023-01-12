@@ -25,12 +25,9 @@ import frozendict  # noqa: F401
 
 from blockmate import schemas  # noqa: F401
 
-from blockmate.model.address_risk_report import AddressRiskReport
-
 from . import path
 
 # query params
-AddressSchema = schemas.StrSchema
 ChainSchema = schemas.StrSchema
 RequestRequiredQueryParams = typing_extensions.TypedDict(
     'RequestRequiredQueryParams',
@@ -40,7 +37,6 @@ RequestRequiredQueryParams = typing_extensions.TypedDict(
 RequestOptionalQueryParams = typing_extensions.TypedDict(
     'RequestOptionalQueryParams',
     {
-        'address': typing.Union[AddressSchema, str, ],
         'chain': typing.Union[ChainSchema, str, ],
     },
     total=False
@@ -51,23 +47,77 @@ class RequestQueryParams(RequestRequiredQueryParams, RequestOptionalQueryParams)
     pass
 
 
-request_query_address = api_client.QueryParameter(
-    name="address",
-    style=api_client.ParameterStyle.FORM,
-    schema=AddressSchema,
-    explode=True,
-)
 request_query_chain = api_client.QueryParameter(
     name="chain",
     style=api_client.ParameterStyle.FORM,
     schema=ChainSchema,
     explode=True,
 )
+# body param
+
+
+class SchemaForRequestBodyApplicationJson(
+    schemas.ListSchema
+):
+
+
+    class MetaOapg:
+        items = schemas.StrSchema
+
+    def __new__(
+        cls,
+        arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, str, ]], typing.List[typing.Union[MetaOapg.items, str, ]]],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+    ) -> 'SchemaForRequestBodyApplicationJson':
+        return super().__new__(
+            cls,
+            arg,
+            _configuration=_configuration,
+        )
+
+    def __getitem__(self, i: int) -> MetaOapg.items:
+        return super().__getitem__(i)
+
+
+request_body_request_body = api_client.RequestBody(
+    content={
+        'application/json': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationJson),
+    },
+)
 _auth = [
     'ProjectJWT',
     'UserJWT',
 ]
-SchemaFor200ResponseBodyApplicationJson = AddressRiskReport
+
+
+class SchemaFor200ResponseBodyApplicationJson(
+    schemas.DictSchema
+):
+
+
+    class MetaOapg:
+        additional_properties = schemas.IntSchema
+    
+    def __getitem__(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
+        # dict_instance[name] accessor
+        return super().__getitem__(name)
+    
+    def get_item_oapg(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
+        return super().get_item_oapg(name)
+
+    def __new__(
+        cls,
+        *args: typing.Union[dict, frozendict.frozendict, ],
+        _configuration: typing.Optional[schemas.Configuration] = None,
+        **kwargs: typing.Union[MetaOapg.additional_properties, decimal.Decimal, int, ],
+    ) -> 'SchemaFor200ResponseBodyApplicationJson':
+        return super().__new__(
+            cls,
+            *args,
+            _configuration=_configuration,
+            **kwargs,
+        )
 
 
 @dataclass
@@ -234,9 +284,11 @@ _all_accept_content_types = (
 
 class BaseApi(api_client.Api):
 
-    def _get_address_risk_score_details_oapg(
+    def _get_multiple_address_risk_score_oapg(
         self: api_client.Api,
+        body: typing.Union[SchemaForRequestBodyApplicationJson, list, tuple, schemas.Unset] = schemas.unset,
         query_params: RequestQueryParams = frozendict.frozendict(),
+        content_type: str = 'application/json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -246,7 +298,7 @@ class BaseApi(api_client.Api):
         api_client.ApiResponseWithoutDeserialization
     ]:
         """
-        Get address risk score details
+        Get multiple risk scores for addresses
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
             class instances
@@ -256,7 +308,6 @@ class BaseApi(api_client.Api):
 
         prefix_separator_iterator = None
         for parameter in (
-            request_query_address,
             request_query_chain,
         ):
             parameter_data = query_params.get(parameter.name, schemas.unset)
@@ -274,10 +325,21 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
 
+        _fields = None
+        _body = None
+        if body is not schemas.unset:
+            serialized_data = request_body_request_body.serialize(body, content_type)
+            _headers.add('Content-Type', content_type)
+            if 'fields' in serialized_data:
+                _fields = serialized_data['fields']
+            elif 'body' in serialized_data:
+                _body = serialized_data['body']
         response = self.api_client.call_api(
             resource_path=used_path,
-            method='get'.upper(),
+            method='post'.upper(),
             headers=_headers,
+            fields=_fields,
+            body=_body,
             auth_settings=_auth,
             stream=stream,
             timeout=timeout,
@@ -298,12 +360,14 @@ class BaseApi(api_client.Api):
         return api_response
 
 
-class GetAddressRiskScoreDetails(BaseApi):
+class GetMultipleAddressRiskScore(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    def get_address_risk_score_details(
+    def get_multiple_address_risk_score(
         self: BaseApi,
+        body: typing.Union[SchemaForRequestBodyApplicationJson, list, tuple, schemas.Unset] = schemas.unset,
         query_params: RequestQueryParams = frozendict.frozendict(),
+        content_type: str = 'application/json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -312,8 +376,10 @@ class GetAddressRiskScoreDetails(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._get_address_risk_score_details_oapg(
+        return self._get_multiple_address_risk_score_oapg(
+            body=body,
             query_params=query_params,
+            content_type=content_type,
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,
@@ -321,12 +387,14 @@ class GetAddressRiskScoreDetails(BaseApi):
         )
 
 
-class ApiForget(BaseApi):
+class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
-    def get(
+    def post(
         self: BaseApi,
+        body: typing.Union[SchemaForRequestBodyApplicationJson, list, tuple, schemas.Unset] = schemas.unset,
         query_params: RequestQueryParams = frozendict.frozendict(),
+        content_type: str = 'application/json',
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
         timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
@@ -335,8 +403,10 @@ class ApiForget(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization
     ]:
-        return self._get_address_risk_score_details_oapg(
+        return self._get_multiple_address_risk_score_oapg(
+            body=body,
             query_params=query_params,
+            content_type=content_type,
             accept_content_types=accept_content_types,
             stream=stream,
             timeout=timeout,

@@ -30,6 +30,7 @@ from blockmate.model.analytics import Analytics
 from . import path
 
 _auth = [
+    'ProjectJWT',
     'UserJWT',
 ]
 
